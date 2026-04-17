@@ -1,0 +1,401 @@
+/* ============================================================
+   PROJECTS SECTION — Clean, Modern & Professional
+   ============================================================ */
+
+/* ── Section wrapper ── */
+.projects-section {
+    background: #000000;
+    padding: 7rem 2rem 8rem;
+    overflow: hidden;
+}
+
+/* Subtle topographic noise texture */
+.projects-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99, 102, 241, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 90% 80%, rgba(236, 72, 153, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* ── Header ── */
+.projects-header {
+    max-width: 760px;
+    margin: 0 auto 5rem;
+    text-align: center;
+}
+
+.projects-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #71717a;
+    margin-bottom: 1rem;
+}
+
+.projects-title {
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin: 0 0 1.25rem;
+    background: linear-gradient(135deg, #ffffff 30%, #8b8fa8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+/* Watermark text */
+.projects-title::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(5rem, 16vw, 11rem);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.025);
+    z-index: -1;
+}
+
+.projects-lead {
+    font-size: 1.05rem;
+    color: #71717a;
+    line-height: 1.75;
+    margin: 0 0 2rem;
+    font-weight: 400;
+}
+
+.projects-line {
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, #6366f1, #ec4899);
+    border-radius: 100px;
+    margin: 0 auto;
+}
+
+/* ── Grid ── */
+.projects-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+/* ── Card ── */
+.proj-card {
+    position: relative;
+    background: #0d0d10;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+
+    /* Enter animation */
+    opacity: 0;
+    transform: translateY(32px);
+}
+
+.proj-card.in-view {
+    animation: cardEnter 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes cardEnter {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.proj-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow:
+        0 24px 60px -16px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* Accent top line */
+.proj-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.proj-card:hover::after {
+    opacity: 1;
+}
+
+/* ── Image ── */
+.proj-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #111114;
+}
+
+.proj-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+    filter: brightness(0.82) saturate(0.9);
+}
+
+.proj-card:hover .proj-image {
+    transform: scale(1.04);
+    filter: brightness(0.95) saturate(1.05);
+}
+
+.proj-image-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    mix-blend-mode: color;
+    transition: opacity 0.4s ease;
+}
+
+.proj-card:hover .proj-image-overlay {
+    opacity: 0.16;
+}
+
+/* Project number badge */
+.proj-id {
+    position: absolute;
+    bottom: 0.85rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.35);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── Body ── */
+.proj-body {
+    padding: 1.6rem 1.75rem 1.9rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0;
+}
+
+.proj-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+}
+
+.proj-category {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.85;
+}
+
+.proj-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #f4f4f5;
+    margin: 0 0 0.7rem;
+    line-height: 1.25;
+}
+
+.proj-desc {
+    font-size: 0.92rem;
+    color: #71717a;
+    line-height: 1.72;
+    margin: 0 0 1.2rem;
+    font-weight: 400;
+    flex: 1;
+}
+
+/* ── Tech tags ── */
+.proj-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+}
+
+.proj-tech-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 0.3rem 0.65rem;
+    transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.proj-card:hover .proj-tech-tag {
+    color: rgba(255, 255, 255, 0.75);
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* ── CTA link ── */
+.proj-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease, gap 0.3s ease;
+    width: fit-content;
+    padding-top: 0.1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 0.15rem;
+}
+
+.proj-link svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.proj-link:hover {
+    color: #ffffff;
+    gap: 0.85rem;
+    border-bottom-color: rgba(255, 255, 255, 0.4);
+}
+
+.proj-link:hover svg {
+    transform: rotate(8deg) scale(1.1);
+}
+
+/* ── Hover glow ── */
+.proj-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%,
+            var(--accent),
+            transparent 72%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    mix-blend-mode: screen;
+}
+
+.proj-card:hover .proj-glow {
+    opacity: 0.06;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 960px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+
+    .projects-section {
+        padding: 5rem 1.5rem 6rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .projects-section {
+        padding: 4rem 1rem 5rem;
+    }
+
+    .projects-header {
+        margin-bottom: 3rem;
+    }
+
+    .projects-grid {
+        gap: 1.25rem;
+    }
+
+    .proj-body {
+        padding: 1.25rem 1.25rem 1.5rem;
+    }
+
+    .proj-title {
+        font-size: 1.2rem;
+    }
+
+    .proj-desc {
+        font-size: 0.88rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-section {
+        padding: 3.5rem 0.875rem 4.5rem;
+    }
+
+    .proj-body {
+        padding: 1rem 1rem 1.25rem;
+    }
+
+    .proj-title {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .projects-section {
+        padding: 3rem 0.75rem 4rem;
+    }
+
+    .projects-title {
+        font-size: 2rem;
+    }
+
+    .proj-tech-tag {
+        font-size: 0.68rem;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .proj-body {
+        padding: 0.875rem 0.875rem 1rem;
+    }
+
+    .proj-title {
+        font-size: 1rem;
+    }
+
+    .proj-desc {
+        font-size: 0.82rem;
+    }
+}
