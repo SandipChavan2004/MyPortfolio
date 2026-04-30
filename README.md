@@ -226,4 +226,4 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
-<p align="center">Made with ❤️ by <strong>Sandip Chavan</strong> · © 2025</p>
+<p align="center">Made with ❤️ by <strong>Sandip Chavan</strong> · © 2026</p>
